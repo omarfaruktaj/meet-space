@@ -8,13 +8,10 @@ export default function Signup() {
 
       <SignupForm />
 
-      <p
-        className="mt-4
-      "
-      >
+      <p className="mt-4">
         Already have an account?{" "}
-        <Link className="text-primary" to={"/login"}>
-          login
+        <Link className="text-primary" to="/login">
+          Log in
         </Link>
       </p>
     </div>

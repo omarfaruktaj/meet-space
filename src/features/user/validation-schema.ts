@@ -26,5 +26,16 @@ export const signupFormSchema = z.object({
 
   address: z.string().min(1, { message: "Please provide your address." }),
 });
+export const loginFormSchema = z.object({
+  email: z
+    .string()
+    .min(1, { message: "Please provide your email address." })
+    .email({ message: "Please enter a valid email address." }),
+
+  password: z
+    .string()
+    .min(6, { message: "Your password must be at least 6 characters long." }),
+});
 
 export type TSignupFormSchema = z.infer<typeof signupFormSchema>;
+export type TLoginFormSchema = z.infer<typeof loginFormSchema>;
