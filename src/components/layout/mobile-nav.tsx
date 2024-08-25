@@ -13,7 +13,7 @@ export default function MobileNav() {
   return (
     <Sheet>
       <SheetTrigger asChild>
-        <Button variant="outline">
+        <Button size={"icon"} variant="ghost">
           <AlignLeft />
         </Button>
       </SheetTrigger>

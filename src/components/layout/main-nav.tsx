@@ -32,7 +32,7 @@ export default function MainNav() {
                 ? ""
                 : isActive
                 ? "bg-gray-100 w-full md:w-auto text-primary px-3 py-2 rounded-md text-sm font-medium"
-                : "hover:bg-gray-100 w-full md:w-auto hover:text-primary px-3 py-2 rounded-md text-sm font-medium"
+                : "hover:bg-gray-100 w-full md:w-auto hover:text-primary px-2 py-2 rounded-md text-sm font-medium"
             }
           >
             {route.label}
