@@ -7,7 +7,7 @@ import MobileNav from "./mobile-nav";
 export default function Navbar() {
   return (
     <div className=" p-4">
-      <div className="container mx-auto flex items-center justify-between">
+      <div className="flex items-center justify-between">
         <Logo />
         <div className="flex items-center justify-center space-x-3">
           <div className="hidden md:block">
