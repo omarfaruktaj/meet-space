@@ -4,17 +4,17 @@ import { NavLink } from "react-router-dom";
 export default function SidebarNav() {
   const routes = [
     {
-      path: "dashboard/rooms",
+      path: "/dashboard/rooms",
       label: "Rooms",
       icon: Hotel,
     },
     {
-      path: "dashboard/slots",
+      path: "/dashboard/slots",
       label: "Slots",
       icon: CalendarClock,
     },
     {
-      path: "dashboard/bookings",
+      path: "/dashboard/bookings",
       label: "Bookings",
       icon: CalendarCheck,
     },
