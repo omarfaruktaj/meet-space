@@ -1,12 +1,9 @@
 import { Link } from "react-router-dom";
-import { Button } from "./button";
 
 export default function Logo() {
   return (
-    <Button variant={"ghost"}>
-      <Link to="/" className=" text-xl font-bold ">
-        Meet Space
-      </Link>
-    </Button>
+    <Link to="/" className=" text-xl font-bold p-1 cursor-pointer">
+      Meet Space
+    </Link>
   );
 }

@@ -9,7 +9,7 @@ import UserProfile from "../user-profile";
 export default function Navbar() {
   const token = useAppSelector((state) => state.user.token);
   return (
-    <div className=" p-4">
+    <div className=" py-4">
       <div className="flex items-center justify-between">
         <Logo />
         <div className="flex items-center justify-center space-x-3">

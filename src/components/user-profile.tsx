@@ -7,6 +7,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { Link } from "react-router-dom";
 
 export default function UserProfile() {
   function handleLogout() {}
@@ -21,8 +22,12 @@ export default function UserProfile() {
         </Avatar>
       </DropdownMenuTrigger>
       <DropdownMenuContent>
-        <DropdownMenuItem>My Bookings</DropdownMenuItem>
-        <DropdownMenuItem> Dashboard</DropdownMenuItem>
+        <DropdownMenuItem>
+          <Link to={"/my-bookings"}>My Bookings</Link>
+        </DropdownMenuItem>
+        <DropdownMenuItem>
+          <Link to={"/dashboard"}>Dashboard</Link>
+        </DropdownMenuItem>
         <DropdownMenuSeparator />
         <DropdownMenuItem onClick={handleLogout}>
           <LogOut className="mr-2 h-4 w-4" />

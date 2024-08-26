@@ -1,4 +1,5 @@
 import AuthLayout from "@/layouts/auth-layout";
+import { Dashboard } from "@/layouts/dashboard-layout";
 import MainLayout from "@/layouts/main-layout";
 import RootLayout from "@/layouts/root-layout";
 import Home from "@/pages/home";
@@ -35,6 +36,11 @@ const router = createBrowserRouter([
             ],
           },
         ],
+      },
+      {
+        path: "/dashboard",
+        index: true,
+        element: <Dashboard />,
       },
     ],
     errorElement: <NotFound />,
