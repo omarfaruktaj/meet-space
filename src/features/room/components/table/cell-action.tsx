@@ -12,13 +12,17 @@ import AlertModal from "@/components/alert-model";
 import { useState } from "react";
 import { Response } from "@/types";
 import { toast } from "sonner";
-import { useDeleteRoomMutation } from "../../roomApi";
+import { useDeleteRoomMutation, useUpdateRoomMutation } from "../../roomApi";
 import { Room } from "../../types";
+import UpdateRoomModel from "../update-room-model";
+import { TRoomFormSchema } from "../../validation-schema";
 
 export default function CellAction({ data }: { data: Room }) {
   const [openModel, setOpenModel] = useState(false);
+  const [openUpdateModel, setOpenUpdateModel] = useState(false);
 
   const [deleteRoom] = useDeleteRoomMutation();
+  const [updateRoom, { isLoading }] = useUpdateRoomMutation();
 
   const handleDelete = async () => {
     try {
@@ -35,6 +39,25 @@ export default function CellAction({ data }: { data: Room }) {
       console.error("Room delete Failed:", error);
     }
   };
+  const handleRoomUpdate = async (roomData: TRoomFormSchema) => {
+    try {
+      const res = (await updateRoom({
+        id: data._id,
+        data: roomData,
+      })) as Response<Room>;
+      if (res.error) {
+        toast.error(
+          res.error.data.message || "Room update failed. Please try again."
+        );
+      } else {
+        toast.success("Room update successfully");
+      }
+      setOpenUpdateModel(false);
+    } catch (error) {
+      toast.error("An unknown error occurred.");
+      console.error("Room update Failed:", error);
+    }
+  };
 
   return (
     <>
@@ -42,6 +65,13 @@ export default function CellAction({ data }: { data: Room }) {
         isOpen={openModel}
         onClose={() => setOpenModel(false)}
         onConfirm={handleDelete}
+      />
+      <UpdateRoomModel
+        data={data}
+        isLoading={isLoading}
+        onClose={() => setOpenUpdateModel(false)}
+        isOpen={openUpdateModel}
+        onSubmit={handleRoomUpdate}
       />
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
@@ -53,7 +83,10 @@ export default function CellAction({ data }: { data: Room }) {
         <DropdownMenuContent align="end">
           <DropdownMenuLabel>Actions</DropdownMenuLabel>
           <DropdownMenuSeparator></DropdownMenuSeparator>
-          <DropdownMenuItem onClick={() => {}} className="cursor-pointer">
+          <DropdownMenuItem
+            onClick={() => setOpenUpdateModel(true)}
+            className="cursor-pointer"
+          >
             <Edit className="h-5 w-5" />
 
             <span className="ml-2">Edit</span>
