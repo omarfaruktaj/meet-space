@@ -20,4 +20,5 @@ export const baseApi = createApi({
   baseQuery,
   reducerPath: "api",
   endpoints: () => ({}),
+  tagTypes: ["Rooms"],
 });

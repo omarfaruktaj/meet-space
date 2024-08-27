@@ -11,8 +11,21 @@ const roomApi = baseApi.injectEndpoints({
         method: "POST",
         body: data,
       }),
+      invalidatesTags: [{ type: "Rooms", id: "LIST" }],
+    }),
+
+    getRooms: builder.query<Room[], null>({
+      query: () => "/rooms",
+      transformResponse: (result: { data: Room[] }) => result.data,
+      providesTags: (result) =>
+        result
+          ? [
+              ...result.map(({ _id }) => ({ type: "Rooms" as const, id: _id })),
+              { type: "Rooms", id: "LIST" },
+            ]
+          : [{ type: "Rooms", id: "LIST" }],
     }),
   }),
 });
 
-export const { useCreateRoomMutation } = roomApi;
+export const { useCreateRoomMutation, useGetRoomsQuery } = roomApi;
