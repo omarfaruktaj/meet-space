@@ -17,7 +17,7 @@ import { roomFormSchema, TRoomFormSchema } from "../validation-schema";
 interface RoomFormProps {
   initialData?: TRoomFormSchema;
   handleSubmit: (data: TRoomFormSchema) => void;
-  isLoading: boolean;
+  isLoading?: boolean;
 }
 
 export default function RoomForm({

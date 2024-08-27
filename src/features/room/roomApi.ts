@@ -25,7 +25,21 @@ const roomApi = baseApi.injectEndpoints({
             ]
           : [{ type: "Rooms", id: "LIST" }],
     }),
+    deleteRoom: builder.mutation<Response<Room>, string>({
+      query: (id) => ({
+        url: `/rooms/${id}`,
+        method: "DELETE",
+      }),
+      invalidatesTags: (result, error, id) => [
+        { type: "Rooms", id: "LIST" },
+        { type: "Rooms", id },
+      ],
+    }),
   }),
 });
 
-export const { useCreateRoomMutation, useGetRoomsQuery } = roomApi;
+export const {
+  useCreateRoomMutation,
+  useGetRoomsQuery,
+  useDeleteRoomMutation,
+} = roomApi;

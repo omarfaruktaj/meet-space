@@ -1,5 +1,5 @@
 import { ColumnDef } from "@tanstack/react-table";
-import { Room } from "../types";
+import { Room } from "../../types";
 import CellAction from "./cell-action";
 
 export const columns: ColumnDef<Room>[] = [
