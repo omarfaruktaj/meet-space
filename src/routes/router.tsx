@@ -2,6 +2,7 @@ import AuthLayout from "@/layouts/auth-layout";
 import { Dashboard } from "@/layouts/dashboard-layout";
 import MainLayout from "@/layouts/main-layout";
 import RootLayout from "@/layouts/root-layout";
+import Booking from "@/pages/dashboard/booking";
 import CreateRoom from "@/pages/dashboard/create-room";
 import CreateSlot from "@/pages/dashboard/create-slot";
 import Rooms from "@/pages/dashboard/rooms";
@@ -63,6 +64,10 @@ const router = createBrowserRouter([
           {
             path: "slots/create",
             element: <CreateSlot />,
+          },
+          {
+            path: "bookings",
+            element: <Booking />,
           },
         ],
       },
