@@ -9,6 +9,7 @@ import Rooms from "@/pages/dashboard/rooms";
 import Slots from "@/pages/dashboard/slots";
 import Home from "@/pages/home";
 import Login from "@/pages/login";
+import MyBooking from "@/pages/my-bookings";
 import NotFound from "@/pages/not-found";
 import Signup from "@/pages/signup";
 import { createBrowserRouter, Navigate } from "react-router-dom";
@@ -38,6 +39,10 @@ const router = createBrowserRouter([
                 element: <Login />,
               },
             ],
+          },
+          {
+            path: "/my-bookings",
+            element: <MyBooking />,
           },
         ],
       },

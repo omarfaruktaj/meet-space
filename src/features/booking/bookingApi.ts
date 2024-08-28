@@ -19,6 +19,10 @@ const bookingApi = baseApi.injectEndpoints({
             ]
           : [{ type: "Bookings", id: "LIST" }],
     }),
+    myBookings: builder.query<Booking[], null>({
+      query: () => "/my-bookings",
+      transformResponse: (result: { data: Booking[] }) => result.data,
+    }),
     deleteBooking: builder.mutation<Response<Booking>, string>({
       query: (id) => ({
         url: `/bookings/${id}`,
@@ -47,6 +51,7 @@ const bookingApi = baseApi.injectEndpoints({
 });
 
 export const {
+  useMyBookingsQuery,
   useGetBookingsQuery,
   useDeleteBookingMutation,
   useUpdateBookingStatusMutation,

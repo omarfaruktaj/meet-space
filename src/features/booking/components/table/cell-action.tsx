@@ -10,7 +10,7 @@ import {
   MoreHorizontal,
   Trash,
   CheckCircle,
-  XCircle,
+  // XCircle,
   XCircle as CancelCircle,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -92,23 +92,23 @@ export default function CellAction({ data }: { data: Booking }) {
             onClick={() => handleStatusChange("confirmed")}
           >
             <CheckCircle className="h-5 w-5 text-primary" />
-            <span className="ml-2">Mark as Confirmed</span>
+            <span className="ml-2">Approve</span>
           </DropdownMenuItem>
-          <DropdownMenuItem
+          {/* <DropdownMenuItem
             disabled={data.isConfirmed === "unconfirmed"}
             className="cursor-pointer"
             onClick={() => handleStatusChange("unconfirmed")}
           >
             <XCircle className="h-5 w-5 text-gray-500" />
             <span className="ml-2">Mark as Unconfirmed</span>
-          </DropdownMenuItem>
+          </DropdownMenuItem> */}
           <DropdownMenuItem
             disabled={data.isConfirmed === "canceled"}
             className="cursor-pointer"
             onClick={() => handleStatusChange("canceled")}
           >
             <CancelCircle className="h-5 w-5 text-red-500 " />
-            <span className="ml-2">Mark as Canceled</span>
+            <span className="ml-2">Reject</span>
           </DropdownMenuItem>
 
           <DropdownMenuSeparator />
