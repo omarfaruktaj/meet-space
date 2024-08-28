@@ -35,7 +35,7 @@ const features = [
 export default function WhyChooseUs() {
   return (
     <div className="py-16 ">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center ">
         <h2 className="text-3xl font-extrabold ">Why Choose Us?</h2>
         <p className="mt-4 text-lg text-muted-foreground">
           Discover the advantages of booking with our platform.
