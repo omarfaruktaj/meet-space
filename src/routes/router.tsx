@@ -3,6 +3,7 @@ import { Dashboard } from "@/layouts/dashboard-layout";
 import MainLayout from "@/layouts/main-layout";
 import RootLayout from "@/layouts/root-layout";
 import AboutUs from "@/pages/about-us";
+import Contact from "@/pages/contact";
 import Booking from "@/pages/dashboard/booking";
 import CreateRoom from "@/pages/dashboard/create-room";
 import CreateSlot from "@/pages/dashboard/create-slot";
@@ -48,6 +49,10 @@ const router = createBrowserRouter([
           {
             path: "/about-us",
             element: <AboutUs />,
+          },
+          {
+            path: "/contact-us",
+            element: <Contact />,
           },
         ],
       },
