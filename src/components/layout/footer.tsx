@@ -101,7 +101,6 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Copyright */}
         <div className="text-center mt-8">
           <p className="text-sm text-gray-600">
             &copy; 2024 Meet-Space. All rights reserved.
