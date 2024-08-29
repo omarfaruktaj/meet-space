@@ -9,3 +9,8 @@ export interface Room {
   _id: string;
   __v: number;
 }
+
+export type TQueryParam = {
+  name: string;
+  value: boolean | React.Key;
+};

@@ -6,7 +6,7 @@ import { Plus } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 export default function Rooms() {
-  const { data, isLoading } = useGetRoomsQuery(null);
+  const { data, isLoading } = useGetRoomsQuery({});
   const navigate = useNavigate();
   if (isLoading) return <p>Loadding..</p>;
 
@@ -24,7 +24,7 @@ export default function Rooms() {
           <span>New Room</span>
         </Button>
       </div>
-      <DataTable columns={columns} data={data} />
+      <DataTable columns={columns} data={data.data} />
     </div>
   );
 }

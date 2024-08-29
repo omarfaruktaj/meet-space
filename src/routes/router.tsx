@@ -11,6 +11,7 @@ import Rooms from "@/pages/dashboard/rooms";
 import Slots from "@/pages/dashboard/slots";
 import Home from "@/pages/home";
 import Login from "@/pages/login";
+import MeetingRooms from "@/pages/meeting-rooms";
 import MyBooking from "@/pages/my-bookings";
 import NotFound from "@/pages/not-found";
 import Signup from "@/pages/signup";
@@ -45,6 +46,10 @@ const router = createBrowserRouter([
           {
             path: "/my-bookings",
             element: <MyBooking />,
+          },
+          {
+            path: "/meeting-rooms",
+            element: <MeetingRooms />,
           },
           {
             path: "/about-us",

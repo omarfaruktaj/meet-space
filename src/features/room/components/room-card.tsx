@@ -27,7 +27,7 @@ export default function RoomCard({ room }: { room: Room }) {
       </CardContent>
       <CardFooter>
         <Button asChild>
-          <Link to={`/rooms/${room._id}`}>See Details</Link>
+          <Link to={`/meeting-rooms/${room._id}`}>See Details</Link>
         </Button>
       </CardFooter>
     </Card>

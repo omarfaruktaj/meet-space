@@ -5,12 +5,12 @@ import { Link } from "react-router-dom";
 import { MoveRight } from "lucide-react";
 
 export default function FeaturedRooms() {
-  const { data, isLoading } = useGetRoomsQuery(null);
+  const { data, isLoading } = useGetRoomsQuery({});
   if (isLoading) return <p>Loadding..</p>;
 
   if (!data) return <p>Someting went very wrong! Please, refresh the page.</p>;
 
-  const rooms = data.slice(0, 6);
+  const rooms = data.data.slice(0, 6);
 
   return (
     <div className="py-16 ">
@@ -29,7 +29,7 @@ export default function FeaturedRooms() {
         <div className="text-end mt-12">
           <Button asChild>
             <Link
-              to="/rooms"
+              to="/meeting-rooms"
               className="flex items-center justify-center space-x-2"
             >
               <span>See More Rooms</span>
