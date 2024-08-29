@@ -5,6 +5,7 @@ export interface Room {
   capacity: number;
   pricePerSlot: number;
   amenities: string[];
+  images: string[];
   isDeleted: boolean;
   _id: string;
   __v: number;

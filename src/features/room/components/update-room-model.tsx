@@ -27,7 +27,8 @@ export default function UpdateRoomModel({
   return (
     <Dialog open={isOpen} onOpenChange={onOpenChange}>
       <DialogContent className="">
-        <DialogTitle className="text-center text-xl">Updata Room</DialogTitle>
+        <DialogTitle className="text-center text-xl ">Updata Room</DialogTitle>
+
         <RoomForm
           handleSubmit={onSubmit}
           isLoading={isLoading}

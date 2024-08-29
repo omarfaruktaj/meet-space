@@ -13,6 +13,7 @@ import {
 import Creatable from "react-select/creatable";
 import { Input } from "@/components/ui/input";
 import { roomFormSchema, TRoomFormSchema } from "../validation-schema";
+import UploadImage from "@/components/upload-image";
 
 interface RoomFormProps {
   initialData?: TRoomFormSchema;
@@ -41,6 +42,7 @@ export default function RoomForm({
           capacity: 0,
           pricePerSlot: 0,
           amenities: [],
+          images: [],
         },
   });
   function handleCreate(inputValue: string) {
@@ -59,6 +61,29 @@ export default function RoomForm({
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+        <FormField
+          control={form.control}
+          name="images"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Images</FormLabel>
+              <FormControl>
+                <UploadImage
+                  value={field.value}
+                  disabled={isLoading}
+                  onChange={(url) => field.onChange([...field.value, url])}
+                  onRemove={(url) =>
+                    field.onChange([
+                      ...field.value.filter((current) => current !== url),
+                    ])
+                  }
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
         <FormField
           control={form.control}
           name="name"

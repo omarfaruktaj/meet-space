@@ -13,12 +13,12 @@ import { Link } from "react-router-dom";
 export default function RoomCard({ room }: { room: Room }) {
   return (
     <Card>
+      <img
+        className="w-full h-48 object-cover rounded-t-md"
+        src={room?.images[0]}
+        alt={room.name}
+      />
       <CardHeader>
-        <img
-          className="w-full h-48 object-cover"
-          src={room?.image}
-          alt={room.name}
-        />
         <CardTitle>{room.name}</CardTitle>
         <CardDescription>Capacity: {room.capacity} people</CardDescription>
       </CardHeader>

@@ -35,6 +35,13 @@ const roomApi = baseApi.injectEndpoints({
       }),
       invalidatesTags: [{ type: "Rooms", id: "LIST" }],
     }),
+    getARoom: builder.query<Room, string>({
+      query: (param) => ({
+        url: `/rooms/${param}`,
+      }),
+      transformResponse: (result: { data: Room }) => result.data,
+      providesTags: (result, error, id) => [{ type: "Rooms", id }],
+    }),
 
     getRooms: builder.query<
       { data: Room[]; pagination: Pagination },
@@ -123,4 +130,5 @@ export const {
   useGetRoomsQuery,
   useDeleteRoomMutation,
   useUpdateRoomMutation,
+  useGetARoomQuery,
 } = roomApi;

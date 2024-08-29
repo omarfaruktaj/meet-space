@@ -202,7 +202,7 @@ export default function MeetingRooms() {
 
       <div className="flex flex-col md:flex-row space-x-6">
         <div className="w-full md:w-1/4">
-          <div className="p-4 bg-gray-50 rounded-lg shadow-md mb-6 md:mb-0 sticky top-24 left-0">
+          <div className="p-4 bg-gray-50 rounded-lg shadow-md mb-6 md:mb-0 sticky top-8 left-0">
             <h2 className="text-xl font-semibold mb-4">Filters</h2>
 
             <div className="mb-6">

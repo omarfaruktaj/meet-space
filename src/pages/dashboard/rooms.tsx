@@ -6,7 +6,7 @@ import { Plus } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 export default function Rooms() {
-  const { data, isLoading } = useGetRoomsQuery({});
+  const { data, isLoading } = useGetRoomsQuery({ limit: 100 });
   const navigate = useNavigate();
   if (isLoading) return <p>Loadding..</p>;
 

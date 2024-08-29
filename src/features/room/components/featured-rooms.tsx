@@ -5,12 +5,12 @@ import { Link } from "react-router-dom";
 import { MoveRight } from "lucide-react";
 
 export default function FeaturedRooms() {
-  const { data, isLoading } = useGetRoomsQuery({});
+  const { data, isLoading } = useGetRoomsQuery({ limit: 6 });
   if (isLoading) return <p>Loadding..</p>;
 
   if (!data) return <p>Someting went very wrong! Please, refresh the page.</p>;
 
-  const rooms = data.data.slice(0, 6);
+  const rooms = data.data;
 
   return (
     <div className="py-16 ">

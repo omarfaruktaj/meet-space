@@ -14,6 +14,7 @@ import Login from "@/pages/login";
 import MeetingRooms from "@/pages/meeting-rooms";
 import MyBooking from "@/pages/my-bookings";
 import NotFound from "@/pages/not-found";
+import RoomDetails from "@/pages/room-details";
 import Signup from "@/pages/signup";
 import { createBrowserRouter, Navigate } from "react-router-dom";
 
@@ -47,10 +48,12 @@ const router = createBrowserRouter([
             path: "/my-bookings",
             element: <MyBooking />,
           },
+
           {
             path: "/meeting-rooms",
             element: <MeetingRooms />,
           },
+          { path: "/meeting-rooms/:id", element: <RoomDetails /> },
           {
             path: "/about-us",
             element: <AboutUs />,
