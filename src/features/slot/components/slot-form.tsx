@@ -41,10 +41,10 @@ export default function SlotForm({
   handleSubmit,
   isLoading,
 }: SlotFormProps) {
-  const { data: rooms, isLoading: isRoomLoading } = useGetRoomsQuery(null);
+  const { data, isLoading: isRoomLoading } = useGetRoomsQuery({});
 
   const action = initialData ? "Save changes" : "Create";
-
+  const rooms = data?.data;
   const form = useForm<TSlotFormSchema>({
     resolver: zodResolver(slotFormSchema),
     defaultValues: initialData
@@ -61,7 +61,6 @@ export default function SlotForm({
   });
 
   function onSubmit(values: TSlotFormSchema) {
-    console.log(values);
     handleSubmit(values);
   }
 

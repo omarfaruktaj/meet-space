@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import Loading from "@/components/ui/loading";
 import { columns } from "@/features/room/components/table/columns";
 import { DataTable } from "@/features/room/components/table/data-table";
 import { useGetRoomsQuery } from "@/features/room/roomApi";
@@ -8,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 export default function Rooms() {
   const { data, isLoading } = useGetRoomsQuery({ limit: 100 });
   const navigate = useNavigate();
-  if (isLoading) return <p>Loadding..</p>;
+  if (isLoading) return <Loading />;
 
   if (!data) return <p>No data found.</p>;
   return (

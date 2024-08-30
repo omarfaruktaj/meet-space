@@ -9,7 +9,7 @@ export const slotFormSchema = z
     date: z.date({
       required_error: "A date of slots is required.",
     }),
-    room: z.string().min(1, { message: "Room cannot be empty." }), // Validate that room is a non-empty string
+    room: z.string().min(1, { message: "Room cannot be empty." }),
     startTime: timeSchema,
     endTime: timeSchema,
   })

@@ -14,6 +14,7 @@ import { Separator } from "@/components/ui/separator";
 import { useGetRoomsQuery } from "@/features/room/roomApi";
 import RoomPagination from "@/features/room/components/room-pagination";
 import RoomCard from "@/features/room/components/room-card";
+import Loading from "@/components/ui/loading";
 
 export default function MeetingRooms() {
   const [searchParams, setSearchParams] = useSearchParams({
@@ -73,7 +74,7 @@ export default function MeetingRooms() {
     searchTerm: debouncedSearchTerm,
   });
 
-  if (isLoading) return; //<Loading />;
+  if (isLoading) return <Loading />;
 
   const handlePageChange = (newPage: number) => {
     if (newPage >= 1 && newPage <= (data?.pagination?.totalPage ?? 0)) {

@@ -39,7 +39,7 @@ export const columns: ColumnDef<Booking>[] = [
           : status === "unconfirmed"
           ? "outline"
           : "destructive";
-      const label = status.charAt(0).toUpperCase() + status.slice(1); // Capitalize first letter
+      const label = status.charAt(0).toUpperCase() + status.slice(1);
 
       return <Badge variant={variant}>{label}</Badge>;
     },

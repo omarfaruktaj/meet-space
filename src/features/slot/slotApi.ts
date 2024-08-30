@@ -10,7 +10,7 @@ const slotApi = baseApi.injectEndpoints({
       query: (data) => {
         const formatedData = {
           ...data,
-          date: format(new Date(), "yyyy-MM-dd"),
+          date: format(data.date, "yyyy-MM-dd"),
         };
 
         return {
@@ -33,6 +33,11 @@ const slotApi = baseApi.injectEndpoints({
             ]
           : [{ type: "Slots", id: "LIST" }],
     }),
+    getAvailabilSlots: builder.query<Slot[], { date: string; roomId: string }>({
+      query: ({ date, roomId }) =>
+        `/slots/availability?date=${date}&roomId=${roomId}`,
+      transformResponse: (result: { data: Slot[] }) => result.data,
+    }),
     deleteSlots: builder.mutation<Response<Slot>, string>({
       query: (id) => ({
         url: `/slots/${id}`,
@@ -50,7 +55,7 @@ const slotApi = baseApi.injectEndpoints({
       query: ({ id, data }) => {
         const formatedData = {
           ...data,
-          date: format(new Date(), "yyyy-MM-dd"),
+          date: format(data.date, "yyyy-MM-dd"),
         };
         return {
           url: `/slots/${id}`,
@@ -70,6 +75,7 @@ const slotApi = baseApi.injectEndpoints({
 export const {
   useCreateSlotMutation,
   useGetSlotsQuery,
+  useGetAvailabilSlotsQuery,
   useUpdateSlotsMutation,
   useDeleteSlotsMutation,
 } = slotApi;

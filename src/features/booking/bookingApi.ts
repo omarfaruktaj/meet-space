@@ -23,6 +23,7 @@ const bookingApi = baseApi.injectEndpoints({
       query: () => "/my-bookings",
       transformResponse: (result: { data: Booking[] }) => result.data,
     }),
+
     deleteBooking: builder.mutation<Response<Booking>, string>({
       query: (id) => ({
         url: `/bookings/${id}`,

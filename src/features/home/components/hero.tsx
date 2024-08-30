@@ -22,7 +22,7 @@ export default function Hero() {
           anywhere.
         </p>
         <Button asChild>
-          <Link to="/rooms">Explore Rooms</Link>
+          <Link to="/meeting-rooms">Explore Rooms</Link>
         </Button>
       </div>
     </div>

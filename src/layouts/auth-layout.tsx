@@ -3,16 +3,16 @@ import { useEffect } from "react";
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
 
 export default function AuthLayout() {
-  const token = useAppSelector((state) => state.user.token);
+  const user = useAppSelector((state) => state.user.user);
   const location = useLocation();
   const navigate = useNavigate();
   const from = location?.state?.from?.pathname || "/";
 
   useEffect(() => {
-    if (token) {
+    if (user) {
       navigate(from, { replace: true });
     }
-  }, [token, navigate, from]);
+  }, [user, navigate, from]);
 
   return (
     <div className="min-h-screen w-full flex items-center justify-center">

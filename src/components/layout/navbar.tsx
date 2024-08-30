@@ -3,11 +3,12 @@ import { Button } from "../ui/button";
 import Logo from "../ui/logo";
 import MainNav from "./main-nav";
 import MobileNav from "./mobile-nav";
-import { useAppSelector } from "@/redux/hooks";
 import UserProfile from "../user-profile";
+import { selectUser } from "@/features/user/userSlice";
+import { useSelector } from "react-redux";
 
 export default function Navbar() {
-  const token = useAppSelector((state) => state.user.token);
+  const user = useSelector(selectUser);
   return (
     <div className=" py-4">
       <div className="flex items-center justify-between">
@@ -17,7 +18,7 @@ export default function Navbar() {
             <MainNav />
           </div>
           <div>
-            {token ? (
+            {user ? (
               <UserProfile />
             ) : (
               <Button size={"sm"}>

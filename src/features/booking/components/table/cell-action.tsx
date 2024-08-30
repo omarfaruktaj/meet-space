@@ -10,7 +10,6 @@ import {
   MoreHorizontal,
   Trash,
   CheckCircle,
-  // XCircle,
   XCircle as CancelCircle,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -21,14 +20,14 @@ import { toast } from "sonner";
 import {
   useDeleteBookingMutation,
   useUpdateBookingStatusMutation,
-} from "../../bookingApi"; // Ensure you have this hook
+} from "../../bookingApi";
 import { Booking } from "../../types";
 
 export default function CellAction({ data }: { data: Booking }) {
   const [openModel, setOpenModel] = useState(false);
 
   const [deleteBooking] = useDeleteBookingMutation();
-  const [updateBookingStatus] = useUpdateBookingStatusMutation(); // Your mutation hook for updating status
+  const [updateBookingStatus] = useUpdateBookingStatusMutation();
 
   const handleDelete = async () => {
     try {

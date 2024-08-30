@@ -1,8 +1,10 @@
+import LoadUser from "@/components/load-user";
 import AuthLayout from "@/layouts/auth-layout";
 import { Dashboard } from "@/layouts/dashboard-layout";
 import MainLayout from "@/layouts/main-layout";
 import RootLayout from "@/layouts/root-layout";
 import AboutUs from "@/pages/about-us";
+import BookingProcess from "@/pages/booking";
 import Contact from "@/pages/contact";
 import Booking from "@/pages/dashboard/booking";
 import CreateRoom from "@/pages/dashboard/create-room";
@@ -17,10 +19,15 @@ import NotFound from "@/pages/not-found";
 import RoomDetails from "@/pages/room-details";
 import Signup from "@/pages/signup";
 import { createBrowserRouter, Navigate } from "react-router-dom";
+import PrivateRoute from "./private-route";
 
 const router = createBrowserRouter([
   {
-    element: <RootLayout />,
+    element: (
+      <LoadUser>
+        <RootLayout />
+      </LoadUser>
+    ),
     children: [
       {
         path: "",
@@ -46,14 +53,33 @@ const router = createBrowserRouter([
           },
           {
             path: "/my-bookings",
-            element: <MyBooking />,
+            element: (
+              <PrivateRoute>
+                <MyBooking />
+              </PrivateRoute>
+            ),
           },
 
           {
             path: "/meeting-rooms",
             element: <MeetingRooms />,
           },
-          { path: "/meeting-rooms/:id", element: <RoomDetails /> },
+          {
+            path: "/meeting-rooms/:id",
+            element: (
+              <PrivateRoute>
+                <RoomDetails />
+              </PrivateRoute>
+            ),
+          },
+          {
+            path: "/meeting-rooms/:id/booking",
+            element: (
+              <PrivateRoute>
+                <BookingProcess />
+              </PrivateRoute>
+            ),
+          },
           {
             path: "/about-us",
             element: <AboutUs />,
@@ -66,7 +92,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/dashboard",
-        element: <Dashboard />,
+        element: (
+          <PrivateRoute requireAdmin>
+            <Dashboard />
+          </PrivateRoute>
+        ),
         children: [
           {
             index: true,

@@ -8,14 +8,16 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import Loading from "@/components/ui/loading";
 import { useGetARoomQuery } from "@/features/room/roomApi";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 export default function RoomDetails() {
   const { id } = useParams();
+  const navigate = useNavigate();
 
   const { data, isLoading } = useGetARoomQuery(id!);
-  if (isLoading) return <p>Loadding</p>;
+  if (isLoading) return <Loading />;
 
   if (!data) return "no data found";
 
@@ -70,7 +72,9 @@ export default function RoomDetails() {
               <span className="text-sm text-gray-500">per slot</span>
             </p>
             <div>
-              <Button size="lg">Book Now</Button>
+              <Button onClick={() => navigate("booking")} size="lg">
+                Book Now
+              </Button>
             </div>
           </div>
         </div>

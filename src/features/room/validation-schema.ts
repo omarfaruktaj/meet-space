@@ -18,7 +18,7 @@ export const roomFormSchema = z.object({
     .number({ required_error: "Price per slot is required" })
     .positive({ message: "Price per slot must be positive" }),
   amenities: z.array(z.string()),
-  images: z.array(z.string()).nonempty(),
+  images: z.array(z.string()).min(1),
 });
 
 export type TRoomFormSchema = z.infer<typeof roomFormSchema>;

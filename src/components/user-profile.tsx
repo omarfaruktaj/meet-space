@@ -7,10 +7,20 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { logOut, selectUser } from "@/features/user/userSlice";
+import { useAppDispatch } from "@/redux/hooks";
 
 export default function UserProfile() {
-  function handleLogout() {}
+  const user = useSelector(selectUser);
+  const navigate = useNavigate();
+
+  const dispatch = useAppDispatch();
+  function handleLogout() {
+    dispatch(logOut());
+    navigate("/");
+  }
 
   return (
     <DropdownMenu>
@@ -22,12 +32,16 @@ export default function UserProfile() {
         </Avatar>
       </DropdownMenuTrigger>
       <DropdownMenuContent>
-        <DropdownMenuItem>
-          <Link to={"/my-bookings"}>My Bookings</Link>
-        </DropdownMenuItem>
-        <DropdownMenuItem>
-          <Link to={"/dashboard"}>Dashboard</Link>
-        </DropdownMenuItem>
+        {user?.role === "user" && (
+          <DropdownMenuItem>
+            <Link to={"/my-bookings"}>My Bookings</Link>
+          </DropdownMenuItem>
+        )}
+        {user?.role === "admin" && (
+          <DropdownMenuItem>
+            <Link to={"/dashboard"}>Dashboard</Link>
+          </DropdownMenuItem>
+        )}
         <DropdownMenuSeparator />
         <DropdownMenuItem onClick={handleLogout}>
           <LogOut className="mr-2 h-4 w-4" />

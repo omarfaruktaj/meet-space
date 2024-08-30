@@ -73,7 +73,6 @@ const roomApi = baseApi.injectEndpoints({
 
         const queryString = buildQueryString(queryParams);
 
-        console.log(queryParams);
         return {
           url: `/rooms?${queryString}`,
         };

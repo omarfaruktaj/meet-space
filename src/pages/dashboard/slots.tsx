@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import Loading from "@/components/ui/loading";
 import { columns } from "@/features/slot/components/table/columns";
 import { DataTable } from "@/features/slot/components/table/data-table";
 import { useGetSlotsQuery } from "@/features/slot/slotApi";
@@ -8,11 +9,10 @@ import { useNavigate } from "react-router-dom";
 export default function Slots() {
   const { data, isLoading } = useGetSlotsQuery(null);
   const navigate = useNavigate();
-  if (isLoading) return <p>Loadding..</p>;
+  if (isLoading) return <Loading />;
 
   if (!data) return <p>No data found.</p>;
 
-  console.log(data);
   return (
     <div className="py-10">
       <div className="flex items-start justify-between pb-8">

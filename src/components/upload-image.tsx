@@ -17,7 +17,6 @@ export default function UploadImage({
   value,
 }: UploadImageProps) {
   const [isUploading, setIsUploading] = useState(false);
-  console.log(value);
 
   const handleImageUpload = async (
     event: React.ChangeEvent<HTMLInputElement>
@@ -33,10 +32,7 @@ export default function UploadImage({
         `${import.meta.env.VITE_CLOUDINARY_UPLOAD_PRESET}`
       );
       formData.append("folder", "meet-space");
-      console.log(
-        import.meta.env.VITE_CLOUDINARY_UPLOAD_PRESET,
-        import.meta.env.VITE_CLOUDINARY_UPLOAD_PRESET
-      );
+
       try {
         const response = await axios.post(
           `https://api.cloudinary.com/v1_1/${
@@ -44,9 +40,7 @@ export default function UploadImage({
           }/image/upload`,
           formData
         );
-        console.log(response);
         const imageUrl = response.data.secure_url;
-        console.log(imageUrl);
         onChange(imageUrl);
       } catch (error) {
         console.error("Image upload failed:", error);

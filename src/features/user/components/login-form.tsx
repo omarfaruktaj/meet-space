@@ -19,11 +19,12 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { Eye, EyeOff } from "lucide-react";
 import { useAppDispatch } from "@/redux/hooks";
-import { setToken } from "../userSlice";
+import { setToken, setUser } from "../userSlice";
 
 export default function LoginForm() {
   const [showPassword, setShowPassword] = useState(false);
   const [login, { isLoading }] = useLoginMutation();
+
   const navigate = useNavigate();
 
   const dispatch = useAppDispatch();
@@ -46,6 +47,7 @@ export default function LoginForm() {
       } else {
         toast.success("You’ve successfully log in.");
         dispatch(setToken(res.data?.token as string));
+        dispatch(setUser(res.data?.data));
         navigate("/");
       }
     } catch (error) {

@@ -19,7 +19,11 @@ const userApi = baseApi.injectEndpoints({
         body: data,
       }),
     }),
+    getMe: builder.query<User, null>({
+      query: () => "/auth/me",
+      transformResponse: (result: { data: User }) => result.data,
+    }),
   }),
 });
 
-export const { useSignupMutation, useLoginMutation } = userApi;
+export const { useSignupMutation, useLoginMutation, useGetMeQuery } = userApi;

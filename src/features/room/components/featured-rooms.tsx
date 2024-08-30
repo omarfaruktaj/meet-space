@@ -3,10 +3,11 @@ import { useGetRoomsQuery } from "../roomApi";
 import RoomCard from "./room-card";
 import { Link } from "react-router-dom";
 import { MoveRight } from "lucide-react";
+import Loading from "@/components/ui/loading";
 
 export default function FeaturedRooms() {
   const { data, isLoading } = useGetRoomsQuery({ limit: 6 });
-  if (isLoading) return <p>Loadding..</p>;
+  if (isLoading) return <Loading />;
 
   if (!data) return <p>Someting went very wrong! Please, refresh the page.</p>;
 
