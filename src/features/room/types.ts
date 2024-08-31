@@ -1,5 +1,6 @@
 export interface Room {
   name: string;
+  description: string;
   roomNo: number;
   floorNo: number;
   capacity: number;

@@ -1,7 +1,6 @@
 import {
   Card,
   CardContent,
-  CardDescription,
   CardFooter,
   CardHeader,
   CardTitle,
@@ -18,11 +17,11 @@ export default function RoomCard({ room }: { room: Room }) {
         src={room?.images[0]}
         alt={room.name}
       />
-      <CardHeader>
+      <CardHeader className="pb-3">
         <CardTitle>{room.name}</CardTitle>
-        <CardDescription>Capacity: {room.capacity} people</CardDescription>
       </CardHeader>
       <CardContent>
+        <p className="mb-1">Capacity: {room.capacity} people</p>
         <p>${room.pricePerSlot} Per Slot</p>
       </CardContent>
       <CardFooter>

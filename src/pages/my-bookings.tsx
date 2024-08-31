@@ -24,7 +24,7 @@ export default function MyBooking() {
     );
   }
   return (
-    <div className="py-10">
+    <div className="min-h-screen py-10">
       <div className="flex items-start justify-between pb-8">
         <h1 className="text-2xl font-bold">My Bookings</h1>
       </div>

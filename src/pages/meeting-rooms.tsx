@@ -15,6 +15,7 @@ import { useGetRoomsQuery } from "@/features/room/roomApi";
 import RoomPagination from "@/features/room/components/room-pagination";
 import RoomCard from "@/features/room/components/room-card";
 import Loading from "@/components/ui/loading";
+import ScrollToTop from "react-scroll-to-top";
 
 export default function MeetingRooms() {
   const [searchParams, setSearchParams] = useSearchParams({
@@ -293,6 +294,7 @@ export default function MeetingRooms() {
           {displayPagination()}
         </div>
       </div>
+      <ScrollToTop height="25" width="25" className=" pl-2 " smooth />
     </div>
   );
 }

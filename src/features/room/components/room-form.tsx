@@ -14,6 +14,7 @@ import Creatable from "react-select/creatable";
 import { Input } from "@/components/ui/input";
 import { roomFormSchema, TRoomFormSchema } from "../validation-schema";
 import UploadImage from "@/components/upload-image";
+import { Textarea } from "@/components/ui/textarea";
 
 interface RoomFormProps {
   initialData?: TRoomFormSchema;
@@ -92,6 +93,23 @@ export default function RoomForm({
               <FormLabel>Name</FormLabel>
               <FormControl>
                 <Input placeholder="Please Enter room name" {...field} />
+              </FormControl>
+
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="description"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Description</FormLabel>
+              <FormControl>
+                <Textarea
+                  placeholder="Tell us a little bit about yourself"
+                  {...field}
+                />
               </FormControl>
 
               <FormMessage />

@@ -1,9 +1,10 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-interface IBookingInfo {
-  room: string;
+export interface IBookingInfo {
+  roomId: string;
+  roomName: string;
   totalPrice: number;
-  date: Date;
+  date: string;
   slots: {
     value: string;
     label: string;
@@ -27,7 +28,8 @@ export const userSlice = createSlice({
   initialState,
   name: "user",
   reducers: {
-    setBookingInfo: (state, action: PayloadAction<IBookingInfo>) => {
+    setBookingInfo: (state, action: PayloadAction<IBookingInfo | null>) => {
+      console.log(action.payload);
       state.bookingInfo = action.payload;
     },
   },

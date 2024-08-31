@@ -116,6 +116,66 @@
     opacity: 0;
   }
 }
+
+/* Stepper.css */
+
+/* Stepper.css */
+.custom-stepper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+}
+
+.stepper-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  z-index: 1; /* Ensure the stepper items are above the line */
+}
+
+.stepper-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f0f0f0;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+}
+
+.stepper-title {
+  font-weight: bold;
+  margin-top: 8px;
+}
+
+.stepper-description {
+  text-align: center;
+  margin-top: 4px;
+}
+
+.stepper-item.active .stepper-icon {
+  background-color: #4caf50;
+  color: #fff;
+}
+
+.stepper-item.completed .stepper-icon {
+  background-color: #8bc34a;
+  color: #fff;
+}
+
+.stepper-line {
+  height: 2px; /* Thickness of the line */
+  background-color: #9e9e9e; /* Color of the line */
+  flex: 1;
+  position: absolute;
+  top: 20px; /* Adjust this to align with the stepper icon */
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 0; /* Ensure the line is below the stepper items */
+}
+
 @layer base {
   * {
     @apply border-border;

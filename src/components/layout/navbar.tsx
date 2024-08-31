@@ -9,8 +9,9 @@ import { useSelector } from "react-redux";
 
 export default function Navbar() {
   const user = useSelector(selectUser);
+  console.log(user);
   return (
-    <div className=" py-4">
+    <div className=" py-4 border-b mb-3 rounded">
       <div className="flex items-center justify-between">
         <Logo />
         <div className="flex items-center justify-center space-x-3">

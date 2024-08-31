@@ -1,3 +1,4 @@
+import BackButton from "@/components/back-button";
 import Loading from "@/components/ui/loading";
 import BookingProcessForm from "@/features/booking/components/booking-process-form";
 import { useGetARoomQuery } from "@/features/room/roomApi";
@@ -9,6 +10,9 @@ export default function BookingProcess() {
   if (isLoading) return <Loading />;
   return (
     <div className="min-h-screen py-8 ">
+      <div className="pb-5">
+        <BackButton />
+      </div>
       <div className="w-full">
         <h2 className="text-3xl font-bold mb-8">Book Your Meeting Room</h2>
         <BookingProcessForm room={room!} />

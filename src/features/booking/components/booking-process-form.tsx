@@ -30,6 +30,7 @@ import { useGetAvailabilSlotsQuery } from "@/features/slot/slotApi";
 import { selectUser } from "@/features/user/userSlice";
 import { useAppDispatch } from "@/redux/hooks";
 import { setBookingInfo } from "../bookingSlice";
+import { useNavigate } from "react-router-dom";
 
 type OptionType = {
   value: string;
@@ -41,6 +42,8 @@ interface BookingProcessFormProps {
 }
 
 export default function BookingProcessForm({ room }: BookingProcessFormProps) {
+  const navigate = useNavigate();
+
   const user = useSelector(selectUser);
   const dispatch = useAppDispatch();
   const form = useForm<TBookingProcessFormSchema>({
@@ -73,10 +76,13 @@ export default function BookingProcessForm({ room }: BookingProcessFormProps) {
   function onSubmit(values: TBookingProcessFormSchema) {
     const bookingInfo = {
       ...values,
-      room: room._id,
+      date: format(values.date, "yyyy-MM-dd"),
+      roomId: room._id,
+      roomName: room.name,
       totalPrice: room.pricePerSlot * values.slots.length,
     };
     dispatch(setBookingInfo(bookingInfo));
+    navigate("chackout");
   }
 
   return (

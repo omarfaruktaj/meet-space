@@ -4,6 +4,11 @@ export const roomFormSchema = z.object({
   name: z
     .string({ required_error: "Please provide a room name" })
     .min(2, { message: "Room name must be at least 2 characters long" }),
+  description: z
+    .string({ required_error: "Please provide a room description" })
+    .min(2, { message: "Room description must be at least 2 characters long" })
+    .max(500, { message: "Description must be at most 500 characters long" }),
+
   roomNo: z.coerce
     .number({ required_error: "Room number is required" })
     .min(1, { message: "Room number must be at least 1" }),

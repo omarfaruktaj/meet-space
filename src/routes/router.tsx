@@ -20,6 +20,7 @@ import RoomDetails from "@/pages/room-details";
 import Signup from "@/pages/signup";
 import { createBrowserRouter, Navigate } from "react-router-dom";
 import PrivateRoute from "./private-route";
+import Chackout from "@/pages/chackout";
 
 const router = createBrowserRouter([
   {
@@ -77,6 +78,14 @@ const router = createBrowserRouter([
             element: (
               <PrivateRoute>
                 <BookingProcess />
+              </PrivateRoute>
+            ),
+          },
+          {
+            path: "/meeting-rooms/:id/booking/chackout",
+            element: (
+              <PrivateRoute>
+                <Chackout />
               </PrivateRoute>
             ),
           },

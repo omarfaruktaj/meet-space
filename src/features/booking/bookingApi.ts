@@ -39,9 +39,20 @@ const bookingApi = baseApi.injectEndpoints({
       { id: string; status: "confirmed" | "unconfirmed" | "canceled" }
     >({
       query: ({ id, status }) => ({
-        url: `bookings/${id}`,
+        url: `/bookings/${id}`,
         method: "PUT",
         body: { isConfirmed: status },
+      }),
+      invalidatesTags: (result, error, { id }) => [
+        { type: "Bookings", id: "LIST" },
+        { type: "Bookings", id },
+      ],
+    }),
+    createBooking: builder.mutation({
+      query: (data) => ({
+        url: `/bookings`,
+        method: "POST",
+        body: data,
       }),
       invalidatesTags: (result, error, { id }) => [
         { type: "Bookings", id: "LIST" },
@@ -56,4 +67,5 @@ export const {
   useGetBookingsQuery,
   useDeleteBookingMutation,
   useUpdateBookingStatusMutation,
+  useCreateBookingMutation,
 } = bookingApi;

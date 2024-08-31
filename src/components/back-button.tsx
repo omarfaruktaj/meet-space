@@ -1,4 +1,4 @@
-import { ArrowLeft } from "lucide-react";
+import { ChevronLeft } from "lucide-react";
 import { Button } from "./ui/button";
 import { useNavigate } from "react-router-dom";
 
@@ -18,15 +18,17 @@ const BackButton: React.FC<BackButtonProps> = ({ onClick }) => {
   };
 
   return (
-    <Button
-      onClick={handleClick}
-      variant="outline"
-      size="sm"
-      className="flex items-center space-x-2 text-gray-700 hover:text-gray-900"
-    >
-      <ArrowLeft className="h-5 w-5" />
-      <span>Back</span>
-    </Button>
+    <div className="mb-8">
+      <Button
+        onClick={handleClick}
+        variant="ghost"
+        size="sm"
+        className="flex items-center space-x-2  "
+      >
+        <ChevronLeft className="h-5 w-5" />
+        <span>Back</span>
+      </Button>
+    </div>
   );
 };
 

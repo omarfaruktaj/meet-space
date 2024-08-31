@@ -1,13 +1,6 @@
 import BackButton from "@/components/back-button";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
+
 import Loading from "@/components/ui/loading";
 import { useGetARoomQuery } from "@/features/room/roomApi";
 import { useNavigate, useParams } from "react-router-dom";
@@ -16,67 +9,108 @@ export default function RoomDetails() {
   const { id } = useParams();
   const navigate = useNavigate();
 
-  const { data, isLoading } = useGetARoomQuery(id!);
+  const { data: room, isLoading } = useGetARoomQuery(id!);
   if (isLoading) return <Loading />;
 
-  if (!data) return "no data found";
+  if (!room) return "no data found";
 
   return (
-    <div className="min-h-scree">
+    <div className="min-h-screen py-8 ">
       <BackButton />
+      <div className=" shadow-lg rounded-lg p-8 ">
+        <div className="flex flex-col md:flex-row md:space-x-6 ">
+          <div className="md:flex space-y-4 md:space-y-0 md:space-x-1">
+            <div className="relative flex-shrink-0 w-full md:w-56 lg:w-80 h-56 md:h-96 lg:h-96  rounded-lg overflow-hidden">
+              <img
+                src={room.images[0]}
+                alt="meeting-room-image-1"
+                className="w-full h-full object-cover"
+              />
+            </div>
 
-      <div className="container mx-auto px-4 py-8">
-        <div className="flex flex-col md:flex-row md:space-x-12">
-          <div className="md:w-1/2 lg:w-1/3">
-            <Carousel className="w-full ">
-              <CarouselContent>
-                {data.images.map((image, index) => (
-                  <CarouselItem key={index}>
-                    <div className="p-2">
-                      <Card className="border  overflow-hidden">
-                        <CardContent className="flex aspect-square items-center justify-center p-4">
-                          <img
-                            src={image}
-                            alt={`Room Image ${index + 1}`}
-                            className="w-full  rounded-lg"
-                          />
-                        </CardContent>
-                      </Card>
-                    </div>
-                  </CarouselItem>
-                ))}
-              </CarouselContent>
-              <CarouselPrevious className="absolute left-4 top-1/2 transform -translate-y-1/2" />
-              <CarouselNext className="absolute right-4 top-1/2 transform -translate-y-1/2" />
-            </Carousel>
+            <div className="flex flex-row md:flex-col  space-x-1 md:space-x-0 md:space-y-1 md:flex-grow">
+              <div className="relative flex-shrink-0 w-1/2 md:w-full lg:w-full h-36 md:h-48   rounded-lg overflow-hidden">
+                <img
+                  src={room.images[1]}
+                  alt="meeting-room-image-2"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <div className="relative flex-shrink-0 w-1/2 md:w-full lg:w-full h-36 md:h-48   rounded-lg overflow-hidden ">
+                <img
+                  src={room.images[2]}
+                  alt="meeting-room-image-3"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            </div>
           </div>
 
-          <div className="md:w-1/2 mt-8 md:mt-0">
-            <h1 className="text-4xl font-extrabold text-gray-900 mb-4">
-              {data.name}
-            </h1>
-            <div className="space-y-2 text-gray-700">
-              <p>
-                <span className="font-semibold">Room No:</span> {data.roomNo}
+          <div className="flex flex-col justify-start mt-8 md:mt-0 md:ml-6 lg:ml-8 md:flex-grow">
+            <div>
+              <h2 className="text-3xl font-bold text-gray-900 mb-6">
+                {room.name}
+              </h2>
+              <p className=" mb-3">
+                <span className="text-lg font-semibold">Room No:</span>
+                <span className="text-lg text-gray-600"> {room.roomNo}</span>
               </p>
-              <p>
-                <span className="font-semibold">Floor No:</span> {data.floorNo}
+              <p className=" mb-3">
+                <span className="text-lg font-semibold">Floor No:</span>
+                <span className="text-lg text-gray-600"> {room.floorNo}</span>
               </p>
-              <p>
-                <span className="font-semibold">Capacity:</span> {data.capacity}{" "}
-                People
+              <p className=" mb-6">
+                <span className="text-lg font-semibold">Capacity:</span>
+                <span className="text-lg text-gray-600">
+                  {" "}
+                  {room.capacity} People
+                </span>
               </p>
             </div>
-            <p className="text-2xl font-bold text-gray-800 mb-4">
-              ${data.pricePerSlot}{" "}
-              <span className="text-sm text-gray-500">per slot</span>
-            </p>
+
             <div>
-              <Button onClick={() => navigate("booking")} size="lg">
+              <p className="text-xl font-bold text-gray-800 mb-4">
+                ${room.pricePerSlot}{" "}
+                <span className="text-sm text-gray-500">Per slot</span>
+              </p>
+              <Button onClick={() => navigate("booking")} size={"lg"}>
                 Book Now
               </Button>
             </div>
           </div>
+        </div>
+
+        <div className="mt-8">
+          <h3 className="text-2xl font-semibold mb-4">Amenities</h3>
+          <ul className="list-disc list-inside grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-4">
+            {room.amenities.map((amenity, index) => (
+              <li
+                key={index}
+                className="flex items-center space-x-2 mb-2 text-gray-800"
+              >
+                <svg
+                  className="w-5 h-5 text-green-500"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M5 13l4 4L19 7"
+                  ></path>
+                </svg>
+                <span>{amenity}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div className="mt-8">
+          <h3 className="text-2xl font-semibold mb-4">Description</h3>
+          <p className="text-gray-700 leading-7">T{room.description}</p>
         </div>
       </div>
     </div>

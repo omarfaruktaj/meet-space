@@ -11,6 +11,7 @@ const userApi = baseApi.injectEndpoints({
         method: "POST",
         body: data,
       }),
+      invalidatesTags: ["Users"],
     }),
     login: builder.mutation<Response<User>, TLoginFormSchema>({
       query: (data) => ({
@@ -18,10 +19,12 @@ const userApi = baseApi.injectEndpoints({
         method: "POST",
         body: data,
       }),
+      invalidatesTags: ["Users"],
     }),
     getMe: builder.query<User, null>({
       query: () => "/auth/me",
       transformResponse: (result: { data: User }) => result.data,
+      providesTags: ["Users"],
     }),
   }),
 });
