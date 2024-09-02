@@ -43,7 +43,7 @@ const slotApi = baseApi.injectEndpoints({
         url: `/slots/${id}`,
         method: "DELETE",
       }),
-      invalidatesTags: (result, error, id) => [
+      invalidatesTags: (_, __, id) => [
         { type: "Slots", id: "LIST" },
         { type: "Slots", id },
       ],
@@ -64,7 +64,7 @@ const slotApi = baseApi.injectEndpoints({
         };
       },
 
-      invalidatesTags: (result, error, { id }) => [
+      invalidatesTags: (_, __, { id }) => [
         { type: "Slots", id: "LIST" },
         { type: "Slots", id },
       ],

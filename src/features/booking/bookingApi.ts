@@ -29,7 +29,7 @@ const bookingApi = baseApi.injectEndpoints({
         url: `/bookings/${id}`,
         method: "DELETE",
       }),
-      invalidatesTags: (result, error, id) => [
+      invalidatesTags: (_, __, id) => [
         { type: "Bookings", id: "LIST" },
         { type: "Bookings", id },
       ],
@@ -43,7 +43,7 @@ const bookingApi = baseApi.injectEndpoints({
         method: "PUT",
         body: { isConfirmed: status },
       }),
-      invalidatesTags: (result, error, { id }) => [
+      invalidatesTags: (_, __, { id }) => [
         { type: "Bookings", id: "LIST" },
         { type: "Bookings", id },
       ],
@@ -54,7 +54,7 @@ const bookingApi = baseApi.injectEndpoints({
         method: "POST",
         body: data,
       }),
-      invalidatesTags: (result, error, { id }) => [
+      invalidatesTags: (_, __, { id }) => [
         { type: "Bookings", id: "LIST" },
         { type: "Bookings", id },
       ],

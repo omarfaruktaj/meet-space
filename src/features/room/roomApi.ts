@@ -40,7 +40,7 @@ const roomApi = baseApi.injectEndpoints({
         url: `/rooms/${param}`,
       }),
       transformResponse: (result: { data: Room }) => result.data,
-      providesTags: (result, error, id) => [{ type: "Rooms", id }],
+      providesTags: (_, __, id) => [{ type: "Rooms", id }],
     }),
 
     getRooms: builder.query<
@@ -101,7 +101,7 @@ const roomApi = baseApi.injectEndpoints({
         url: `/rooms/${id}`,
         method: "DELETE",
       }),
-      invalidatesTags: (result, error, id) => [
+      invalidatesTags: (_, __, id) => [
         { type: "Rooms", id: "LIST" },
         { type: "Rooms", id },
       ],
@@ -116,7 +116,7 @@ const roomApi = baseApi.injectEndpoints({
         body: data,
       }),
 
-      invalidatesTags: (result, error, { id }) => [
+      invalidatesTags: (_, __, { id }) => [
         { type: "Rooms", id: "LIST" },
         { type: "Rooms", id },
       ],

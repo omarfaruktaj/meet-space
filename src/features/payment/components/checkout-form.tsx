@@ -7,7 +7,6 @@ import { toast } from "sonner";
 import ConfirmModel from "@/components/confirm-mode";
 import { useCreateBookingMutation } from "@/features/booking/bookingApi";
 import { IBookingInfo } from "@/features/booking/bookingSlice";
-import { useNavigate } from "react-router-dom";
 import { useAppSelector } from "@/redux/hooks";
 import { runFireworks } from "@/utils/runFireworks";
 
