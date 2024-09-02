@@ -29,23 +29,22 @@ export default function PrivateRoute({
   }, [userData, dispatch]);
 
   useEffect(() => {
-    if (!user && !userData) {
+    if (!isLoading && !token) {
       navigate("/login");
     }
-  }, [user, userData, isLoading, navigate]);
+  }, [token, isLoading, navigate]);
 
   useEffect(() => {
-    if (!isLoading && requireAdmin && user?.role !== "admin") {
+    if (!isLoading && requireAdmin && user && user?.role !== "admin") {
       toast.warning("You have no access to this route");
       dispatch(logOut());
       navigate("/login");
     }
   }, [requireAdmin, user, isLoading, dispatch, navigate]);
 
-  if (isLoading) {
-    return <div>Loading...</div>;
+  if (isLoading || (!user && !userData)) {
+    return <Loading />;
   }
-  if (!user) return <Loading />;
 
   return <div>{children}</div>;
 }

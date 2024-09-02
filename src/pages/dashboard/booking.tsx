@@ -8,6 +8,7 @@ export default function Booking() {
   if (isLoading) return <Loading />;
 
   if (!data) return <p>No data found.</p>;
+
   return (
     <div className="py-10">
       <div className="flex items-start justify-between pb-8">

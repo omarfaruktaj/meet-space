@@ -32,8 +32,8 @@ export default function LoginForm() {
   const form = useForm<TLoginFormSchema>({
     resolver: zodResolver(loginFormSchema),
     defaultValues: {
-      email: "omar3@gmail.com",
-      password: "123456",
+      email: "",
+      password: "",
     },
   });
 
