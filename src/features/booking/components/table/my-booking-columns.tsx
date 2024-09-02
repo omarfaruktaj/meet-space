@@ -2,6 +2,7 @@ import { ColumnDef } from "@tanstack/react-table";
 import { Booking } from "../../types";
 import { Slot } from "@/features/slot/types";
 import { Badge } from "@/components/ui/badge";
+import { convertTime24to12 } from "@/utils/format-time-24-to-12";
 
 export const myBookingColumns: ColumnDef<Booking>[] = [
   {
@@ -19,7 +20,8 @@ export const myBookingColumns: ColumnDef<Booking>[] = [
     cell: ({ row }) => {
       return row.original.slots.map((slot: Slot, index: number) => (
         <div key={index}>
-          {slot.startTime} - {slot.endTime}
+          {convertTime24to12(slot.startTime)} -{" "}
+          {convertTime24to12(slot.endTime)}
         </div>
       ));
     },

@@ -100,15 +100,15 @@ export default function MeetingRooms() {
     }));
   };
 
-  const handleMinPrice = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchParams((prev) => {
-      prev.set("min_price", e.target.value);
-      prev.set("page", "1");
+  // const handleMinPrice = (e: React.ChangeEvent<HTMLInputElement>) => {
+  //   setSearchParams((prev) => {
+  //     prev.set("min_price", e.target.value);
+  //     prev.set("page", "1");
 
-      return prev;
-    });
-    setFilterValues((prev) => ({ ...prev, page: 1, minPrice: e.target.value }));
-  };
+  //     return prev;
+  //   });
+  //   setFilterValues((prev) => ({ ...prev, page: 1, minPrice: e.target.value }));
+  // };
 
   const handleMaxPrice = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchParams((prev) => {
@@ -133,18 +133,18 @@ export default function MeetingRooms() {
     }));
   };
 
-  const handleMaxCapacity = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchParams((prev) => {
-      prev.set("max_capacity", e.target.value);
-      prev.set("page", "1");
-      return prev;
-    });
-    setFilterValues((prev) => ({
-      ...prev,
-      page: 1,
-      maxCapacity: e.target.value,
-    }));
-  };
+  // const handleMaxCapacity = (e: React.ChangeEvent<HTMLInputElement>) => {
+  //   setSearchParams((prev) => {
+  //     prev.set("max_capacity", e.target.value);
+  //     prev.set("page", "1");
+  //     return prev;
+  //   });
+  //   setFilterValues((prev) => ({
+  //     ...prev,
+  //     page: 1,
+  //     maxCapacity: e.target.value,
+  //   }));
+  // };
 
   const handleSortBy = (value: string) => {
     setSearchParams((prev) => {
@@ -202,7 +202,7 @@ export default function MeetingRooms() {
         <Separator />
       </div>
 
-      <div className="flex flex-col md:flex-row space-x-6">
+      <div className="flex flex-col md:flex-row md:space-x-6">
         <div className="w-full md:w-1/4">
           <div className="p-4 bg-gray-50 rounded-lg shadow-md mb-6 md:mb-0 sticky top-8 left-0">
             <h2 className="text-xl font-semibold mb-4">Filters</h2>
@@ -217,29 +217,29 @@ export default function MeetingRooms() {
             </div>
 
             <div className="mb-6">
-              <span className="block mb-2 font-medium">Price Range:</span>
+              <span className="block mb-2 font-medium">Max Price: </span>
               <div className="flex items-center">
-                <Input
+                {/* <Input
                   type="number"
                   onChange={handleMinPrice}
                   value={filterValues.minPrice}
                   min={1}
                   placeholder="Min"
                   className="w-1/2 mr-2"
-                />
+                /> */}
                 <Input
                   type="number"
                   onChange={handleMaxPrice}
                   value={filterValues.maxPrice}
                   min={1}
                   placeholder="Max"
-                  className="w-1/2"
+                  className="w-full"
                 />
               </div>
             </div>
 
             <div className="mb-6">
-              <span className="block mb-2 font-medium">Capacity Range:</span>
+              <span className="block mb-2 font-medium">Min Capacity:</span>
               <div className="flex items-center">
                 <Input
                   type="number"
@@ -247,16 +247,16 @@ export default function MeetingRooms() {
                   value={filterValues.minCapacity}
                   min={1}
                   placeholder="Min"
-                  className="w-1/2 mr-2"
+                  className="w-full mr-2"
                 />
-                <Input
+                {/* <Input
                   type="number"
                   onChange={handleMaxCapacity}
                   value={filterValues.maxCapacity}
                   min={1}
                   placeholder="Max"
                   className="w-1/2"
-                />
+                /> */}
               </div>
             </div>
 

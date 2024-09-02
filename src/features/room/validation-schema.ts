@@ -22,8 +22,12 @@ export const roomFormSchema = z.object({
   pricePerSlot: z.coerce
     .number({ required_error: "Price per slot is required" })
     .positive({ message: "Price per slot must be positive" }),
-  amenities: z.array(z.string()),
-  images: z.array(z.string()).min(1),
+  amenities: z
+    .array(z.string())
+    .min(2, { message: "At least two amenity is required" }),
+  images: z
+    .array(z.string())
+    .min(3, { message: "At least 3 images are required" }),
 });
 
 export type TRoomFormSchema = z.infer<typeof roomFormSchema>;

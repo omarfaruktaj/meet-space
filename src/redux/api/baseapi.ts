@@ -1,8 +1,7 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { RootState } from "../store";
 
-// const BASE_URL = "https://coworking-space-six.vercel.app/api";
-const BASE_URL = "http://localhost:5000/api";
+const BASE_URL = "https://coworking-space-six.vercel.app/api";
 
 const baseQuery = fetchBaseQuery({
   baseUrl: BASE_URL,

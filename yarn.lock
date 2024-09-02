@@ -955,26 +955,6 @@
     "@react-spring/shared" "~9.7.4"
     "@react-spring/types" "~9.7.4"
 
-"@react-spring/konva@~9.7.4":
-  version "9.7.4"
-  resolved "https://registry.npmjs.org/@react-spring/konva/-/konva-9.7.4.tgz"
-  integrity sha512-B2IRytWM2ixifoKxE5DXTUXxNAhPsPqozrZEXXkwKhet1P2xvxXpTYrmDi0NnqTijVbAA3n1hUv8/DqqMKoI0Q==
-  dependencies:
-    "@react-spring/animated" "~9.7.4"
-    "@react-spring/core" "~9.7.4"
-    "@react-spring/shared" "~9.7.4"
-    "@react-spring/types" "~9.7.4"
-
-"@react-spring/native@~9.7.4":
-  version "9.7.4"
-  resolved "https://registry.npmjs.org/@react-spring/native/-/native-9.7.4.tgz"
-  integrity sha512-mBaDq8MA1O42QS1vlw06cf+GiwWZWPi0n6reZAjAfpO1mShi63uHCBcRrez8JGw2F/JSMaRQ5Ya1n5s47S3VlQ==
-  dependencies:
-    "@react-spring/animated" "~9.7.4"
-    "@react-spring/core" "~9.7.4"
-    "@react-spring/shared" "~9.7.4"
-    "@react-spring/types" "~9.7.4"
-
 "@react-spring/rafz@~9.7.4":
   version "9.7.4"
   resolved "https://registry.npmjs.org/@react-spring/rafz/-/rafz-9.7.4.tgz"
@@ -988,35 +968,15 @@
     "@react-spring/rafz" "~9.7.4"
     "@react-spring/types" "~9.7.4"
 
-"@react-spring/three@~9.7.4":
-  version "9.7.4"
-  resolved "https://registry.npmjs.org/@react-spring/three/-/three-9.7.4.tgz"
-  integrity sha512-HKUhrrvWW7F/MAroObOloqcYyFqsUHp1ANIDvPVxk9cSh7veW7gQbJm2Sc7Ka+L4gVJEwSkS+MRfr8kk+sRZBw==
-  dependencies:
-    "@react-spring/animated" "~9.7.4"
-    "@react-spring/core" "~9.7.4"
-    "@react-spring/shared" "~9.7.4"
-    "@react-spring/types" "~9.7.4"
-
 "@react-spring/types@~9.7.4":
   version "9.7.4"
   resolved "https://registry.npmjs.org/@react-spring/types/-/types-9.7.4.tgz"
   integrity sha512-iQVztO09ZVfsletMiY+DpT/JRiBntdsdJ4uqk3UJFhrhS8mIC9ZOZbmfGSRs/kdbNPQkVyzucceDicQ/3Mlj9g==
 
-"@react-spring/web@~9.7.4":
+"@react-spring/web@^9.7.4":
   version "9.7.4"
-  resolved "https://registry.npmjs.org/@react-spring/web/-/web-9.7.4.tgz"
+  resolved "https://registry.yarnpkg.com/@react-spring/web/-/web-9.7.4.tgz#0086ab5dcf17e6a8f3d7e7f8041ccb4cc2fa10dc"
   integrity sha512-UMvCZp7I5HCVIleSa4BwbNxynqvj+mJjG2m20VO2yPoi2pnCYANy58flvz9v/YcXTAvsmL655FV3pm5fbr6akA==
-  dependencies:
-    "@react-spring/animated" "~9.7.4"
-    "@react-spring/core" "~9.7.4"
-    "@react-spring/shared" "~9.7.4"
-    "@react-spring/types" "~9.7.4"
-
-"@react-spring/zdog@~9.7.4":
-  version "9.7.4"
-  resolved "https://registry.npmjs.org/@react-spring/zdog/-/zdog-9.7.4.tgz"
-  integrity sha512-uKAzQqKXxHYyGo36EYQEIZzNB60gxQsCG6aaXO2LY5aa7kq44pJX/92D1YigOIhJ/sbfJOXYfdJC/ntvATvzCQ==
   dependencies:
     "@react-spring/animated" "~9.7.4"
     "@react-spring/core" "~9.7.4"
@@ -1174,6 +1134,11 @@
   integrity sha512-r1bzfrm0tomOI8g1SzvCaQHo6Lcv6zu0EA+W2kHrt8dyrHQxGzBBL4kdkzIS+jBMV+EYcMAEAqXqYaLJq5rOZg==
   dependencies:
     "@babel/types" "^7.20.7"
+
+"@types/canvas-confetti@^1.6.4":
+  version "1.6.4"
+  resolved "https://registry.yarnpkg.com/@types/canvas-confetti/-/canvas-confetti-1.6.4.tgz#620fd8d78b335d6a4046c0f73236d6988b37552a"
+  integrity sha512-fNyZ/Fdw/Y92X0vv7B+BD6ysHL4xVU5dJcgzgxLdGbn8O3PezZNIJpml44lKM0nsGur+o/6+NZbZeNTt00U1uA==
 
 "@types/estree@1.0.5":
   version "1.0.5"
@@ -1515,6 +1480,11 @@ caniuse-lite@^1.0.30001646:
   version "1.0.30001651"
   resolved "https://registry.npmjs.org/caniuse-lite/-/caniuse-lite-1.0.30001651.tgz"
   integrity sha512-9Cf+Xv1jJNe1xPZLGuUXLNkE1BoDkqRqYyFJ9TDYSqhduqA4hu4oR9HluGoWYQC/aj8WHjsGVV+bwkh0+tegRg==
+
+canvas-confetti@^1.9.3:
+  version "1.9.3"
+  resolved "https://registry.yarnpkg.com/canvas-confetti/-/canvas-confetti-1.9.3.tgz#ef4c857420ad8045ab4abe8547261c8cdf229845"
+  integrity sha512-rFfTURMvmVEX1gyXFgn5QMn81bYk70qa0HLzcIOSVEyl57n6o9ItHeBtUSWdvKAPY0xlvBHno4/v3QPrT83q9g==
 
 chalk@^2.4.2:
   version "2.4.2"
@@ -2678,18 +2648,6 @@ react-select@^5.8.0:
     prop-types "^15.6.0"
     react-transition-group "^4.3.0"
     use-isomorphic-layout-effect "^1.1.2"
-
-react-spring@^9.7.4:
-  version "9.7.4"
-  resolved "https://registry.npmjs.org/react-spring/-/react-spring-9.7.4.tgz"
-  integrity sha512-ypxdsOwmCfbDZGTBRyBo7eLjF55xNFN86e/QkflZ1Rfo8QMzVjCAWocrEEbsuFKkQAg2RRdhNkinWJ6BpCvJoQ==
-  dependencies:
-    "@react-spring/core" "~9.7.4"
-    "@react-spring/konva" "~9.7.4"
-    "@react-spring/native" "~9.7.4"
-    "@react-spring/three" "~9.7.4"
-    "@react-spring/web" "~9.7.4"
-    "@react-spring/zdog" "~9.7.4"
 
 react-style-singleton@^2.2.1:
   version "2.2.1"

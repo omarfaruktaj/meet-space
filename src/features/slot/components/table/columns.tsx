@@ -1,6 +1,7 @@
 import { ColumnDef } from "@tanstack/react-table";
 import { Slot } from "../../types";
 import CellAction from "./cell-action";
+import { convertTime24to12 } from "@/utils/format-time-24-to-12";
 
 export const columns: ColumnDef<Slot>[] = [
   {
@@ -17,13 +18,20 @@ export const columns: ColumnDef<Slot>[] = [
   },
 
   {
-    accessorKey: "startTime",
+    id: "startTime",
     header: "Start Time",
+    cell: ({ row }) => {
+      return <div>{convertTime24to12(row.original.startTime)}</div>;
+    },
   },
 
   {
+    id: "endTime",
     accessorKey: "endTime",
     header: "End Time",
+    cell: ({ row }) => {
+      return <div>{convertTime24to12(row.original.endTime)}</div>;
+    },
   },
 
   {

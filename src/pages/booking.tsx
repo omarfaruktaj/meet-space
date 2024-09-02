@@ -13,9 +13,11 @@ export default function BookingProcess() {
       <div className="pb-5">
         <BackButton />
       </div>
-      <div className="w-full">
-        <h2 className="text-3xl font-bold mb-8">Book Your Meeting Room</h2>
-        <BookingProcessForm room={room!} />
+      <div className="max-w-4xl mx-auto  px-4 sm:px-6 lg:px-8">
+        <div className="w-full">
+          <h2 className="text-3xl font-bold mb-8">Book Your Meeting Room</h2>
+          <BookingProcessForm room={room!} />
+        </div>
       </div>
     </div>
   );

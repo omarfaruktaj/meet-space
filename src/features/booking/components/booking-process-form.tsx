@@ -15,22 +15,17 @@ import {
   BookingProcessFormSchema,
   TBookingProcessFormSchema,
 } from "../validation-schema";
-import { CalendarIcon } from "lucide-react";
 import { Calendar } from "@/components/ui/calendar";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover";
-import { cn } from "@/lib/utils";
+
 import Select, { GroupBase, OptionsOrGroups } from "react-select";
 import { useSelector } from "react-redux";
 import { Room } from "@/features/room/types";
 import { useGetAvailabilSlotsQuery } from "@/features/slot/slotApi";
 import { selectUser } from "@/features/user/userSlice";
-import { useAppDispatch } from "@/redux/hooks";
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { setBookingInfo } from "../bookingSlice";
 import { useNavigate } from "react-router-dom";
+import { convertTime24to12 } from "@/utils/format-time-24-to-12";
 
 type OptionType = {
   value: string;
@@ -45,19 +40,28 @@ export default function BookingProcessForm({ room }: BookingProcessFormProps) {
   const navigate = useNavigate();
 
   const user = useSelector(selectUser);
+
+  const bookingData = useAppSelector((state) => state.booking.bookingInfo);
+
   const dispatch = useAppDispatch();
   const form = useForm<TBookingProcessFormSchema>({
     resolver: zodResolver(BookingProcessFormSchema),
-    defaultValues: {
-      userInfo: {
-        ...user,
-      },
-      slots: [],
-    },
+    defaultValues: bookingData
+      ? {
+          date: new Date(bookingData.date),
+          slots: bookingData.slots,
+          userInfo: { ...bookingData.userInfo },
+        }
+      : {
+          userInfo: {
+            ...user,
+          },
+          slots: [],
+        },
   });
   const dateValue = useWatch({ control: form.control, name: "date" });
 
-  const { data, isLoading } = useGetAvailabilSlotsQuery(
+  const { data, isLoading, error } = useGetAvailabilSlotsQuery(
     {
       roomId: room?._id,
       date: format(new Date(dateValue ? dateValue : new Date()), "yyyy-MM-dd"),
@@ -70,7 +74,9 @@ export default function BookingProcessForm({ room }: BookingProcessFormProps) {
     GroupBase<OptionType>
   > = data?.map((slot) => ({
     value: slot._id,
-    label: `${slot.startTime} - ${slot.endTime}`,
+    label: `${convertTime24to12(slot.startTime)} - ${convertTime24to12(
+      slot.endTime
+    )}`,
   })) || [];
 
   function onSubmit(values: TBookingProcessFormSchema) {
@@ -88,14 +94,13 @@ export default function BookingProcessForm({ room }: BookingProcessFormProps) {
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div>
-            <h3 className="text-xl font-semibold text-gray-700 mb-4">
-              Room Details
-            </h3>
-            <p className="mb-2">Room</p>
-            <p className="text-xl font-semibold mb-6 text-gray-600">
-              {room?.name}
+            <p className="mb-2">
+              Room:{" "}
+              <span className=" font-semibold mb-6 text-gray-600">
+                {room?.name}
+              </span>
             </p>
 
             <FormField
@@ -103,40 +108,19 @@ export default function BookingProcessForm({ room }: BookingProcessFormProps) {
               name="date"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="text-gray-700">Date</FormLabel>
-                  <Popover>
-                    <PopoverTrigger asChild>
-                      <FormControl>
-                        <Button
-                          variant="outline"
-                          className={cn(
-                            "w-full pl-3 text-left font-normal",
-                            !field.value && "text-muted-foreground"
-                          )}
-                        >
-                          {field.value ? (
-                            format(field.value, "yyyy-MM-dd")
-                          ) : (
-                            <span>Pick a date</span>
-                          )}
-                          <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
-                        </Button>
-                      </FormControl>
-                    </PopoverTrigger>
-                    <PopoverContent className="w-auto p-0" align="start">
-                      <Calendar
-                        mode="single"
-                        selected={field.value}
-                        onSelect={field.onChange}
-                        disabled={(date) => {
-                          const today = new Date();
-                          today.setHours(0, 0, 0, 0);
-                          return date < today;
-                        }}
-                        initialFocus
-                      />
-                    </PopoverContent>
-                  </Popover>
+                  <FormLabel className="text-gray-700">Select a Date</FormLabel>
+
+                  <Calendar
+                    mode="single"
+                    selected={field.value}
+                    onSelect={field.onChange}
+                    disabled={(date) => {
+                      const today = new Date();
+                      today.setHours(0, 0, 0, 0);
+                      return date < today;
+                    }}
+                    className="rounded-md border max-w-72"
+                  />
                   <FormMessage />
                 </FormItem>
               )}
@@ -147,9 +131,10 @@ export default function BookingProcessForm({ room }: BookingProcessFormProps) {
               name="slots"
               render={({ field: { onChange, value } }) => (
                 <FormItem>
-                  <FormLabel className="text-gray-700">Slots</FormLabel>
+                  <FormLabel className="text-gray-700">Select Slots</FormLabel>
                   <FormControl>
                     <Select
+                      className="max-w-72"
                       styles={{
                         control: (provided, state) => ({
                           ...provided,
@@ -173,19 +158,25 @@ export default function BookingProcessForm({ room }: BookingProcessFormProps) {
                         label: val.label,
                         value: val.value,
                       }))}
+                      closeMenuOnSelect={false}
                       onChange={onChange}
                       options={slotOptions}
-                      isDisabled={!dateValue || isLoading}
+                      isDisabled={!dateValue || isLoading || !!error}
                     />
                   </FormControl>
                   <FormMessage />
+                  <div className="h-2">
+                    {error && (
+                      <p className="text-rose-500">No Slot availabile.</p>
+                    )}
+                  </div>
                 </FormItem>
               )}
             />
           </div>
 
           <div>
-            <h3 className="text-xl font-semibold text-gray-700 mb-4">
+            <h3 className="text-xl font-semibold text-gray-700 mb-4 mt-8">
               Your Information
             </h3>
 

@@ -61,7 +61,7 @@ export default function RoomForm({
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
         <FormField
           control={form.control}
           name="images"
@@ -117,76 +117,84 @@ export default function RoomForm({
           )}
         />
 
-        <FormField
-          control={form.control}
-          name="roomNo"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Room Number</FormLabel>
-              <FormControl>
-                <Input
-                  type="number"
-                  placeholder="Enter room number"
-                  {...field}
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
+        <div className="flex items-center justify-between">
+          <FormField
+            control={form.control}
+            name="roomNo"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Room Number</FormLabel>
+                <FormControl>
+                  <Input
+                    type="number"
+                    placeholder="Enter room number"
+                    {...field}
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
 
-        <FormField
-          control={form.control}
-          name="floorNo"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Floor Number</FormLabel>
-              <FormControl>
-                <Input
-                  type="number"
-                  placeholder="Enter floor number"
-                  {...field}
-                />
-              </FormControl>
+          <FormField
+            control={form.control}
+            name="floorNo"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Floor Number</FormLabel>
+                <FormControl>
+                  <Input
+                    type="number"
+                    placeholder="Enter floor number"
+                    {...field}
+                  />
+                </FormControl>
 
-              <FormMessage />
-            </FormItem>
-          )}
-        />
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+        </div>
 
-        <FormField
-          control={form.control}
-          name="capacity"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Capacity</FormLabel>
-              <FormControl>
-                <Input type="number" placeholder="Enter capacity" {...field} />
-              </FormControl>
+        <div className="flex items-center justify-between">
+          <FormField
+            control={form.control}
+            name="capacity"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Capacity</FormLabel>
+                <FormControl>
+                  <Input
+                    type="number"
+                    placeholder="Enter capacity"
+                    {...field}
+                  />
+                </FormControl>
 
-              <FormMessage />
-            </FormItem>
-          )}
-        />
+                <FormMessage />
+              </FormItem>
+            )}
+          />
 
-        <FormField
-          control={form.control}
-          name="pricePerSlot"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Price per Slot</FormLabel>
-              <FormControl>
-                <Input
-                  type="number"
-                  placeholder="Enter price per slot"
-                  {...field}
-                />
-              </FormControl>
+          <FormField
+            control={form.control}
+            name="pricePerSlot"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Price per Slot</FormLabel>
+                <FormControl>
+                  <Input
+                    type="number"
+                    placeholder="Enter price per slot"
+                    {...field}
+                  />
+                </FormControl>
 
-              <FormMessage />
-            </FormItem>
-          )}
-        />
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+        </div>
 
         <FormField
           control={form.control}

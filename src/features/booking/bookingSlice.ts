@@ -16,24 +16,23 @@ export interface IBookingInfo {
     address: string;
   };
 }
-interface UserState {
+interface BookingState {
   bookingInfo: null | IBookingInfo;
 }
 
-const initialState: UserState = {
+const initialState: BookingState = {
   bookingInfo: null,
 };
 
-export const userSlice = createSlice({
+export const bookingSlice = createSlice({
   initialState,
-  name: "user",
+  name: "booking",
   reducers: {
     setBookingInfo: (state, action: PayloadAction<IBookingInfo | null>) => {
-      console.log(action.payload);
       state.bookingInfo = action.payload;
     },
   },
 });
 
-export const { setBookingInfo } = userSlice.actions;
-export default userSlice.reducer;
+export const { setBookingInfo } = bookingSlice.actions;
+export default bookingSlice.reducer;

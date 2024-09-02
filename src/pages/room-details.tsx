@@ -17,10 +17,10 @@ export default function RoomDetails() {
   return (
     <div className="min-h-screen py-8 ">
       <BackButton />
-      <div className=" shadow-lg rounded-lg p-8 ">
-        <div className="flex flex-col md:flex-row md:space-x-6 ">
+      <div className=" max-w-4xl mx-auto shadow-md rounded-md p-8 ">
+        <div className="flex flex-col gap-x-8 gap-y-8">
           <div className="md:flex space-y-4 md:space-y-0 md:space-x-1">
-            <div className="relative flex-shrink-0 w-full md:w-56 lg:w-80 h-56 md:h-96 lg:h-96  rounded-lg overflow-hidden">
+            <div className="relative flex-shrink-0 w-full md:w-80 lg:w-96 h-96 md:h-96 lg:h-96  rounded-lg overflow-hidden">
               <img
                 src={room.images[0]}
                 alt="meeting-room-image-1"
@@ -46,9 +46,9 @@ export default function RoomDetails() {
             </div>
           </div>
 
-          <div className="flex flex-col justify-start mt-8 md:mt-0 md:ml-6 lg:ml-8 md:flex-grow">
+          <div className="flex flex-col justify-start  md:flex-grow">
             <div>
-              <h2 className="text-3xl font-bold text-gray-900 mb-6">
+              <h2 className="text-3xl font-bold text-gray-900 mb-3">
                 {room.name}
               </h2>
               <p className=" mb-3">
@@ -96,9 +96,9 @@ export default function RoomDetails() {
                   xmlns="http://www.w3.org/2000/svg"
                 >
                   <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
                     d="M5 13l4 4L19 7"
                   ></path>
                 </svg>

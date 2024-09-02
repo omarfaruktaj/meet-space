@@ -1,50 +1,89 @@
-# React + TypeScript + Vite
+# Meet Space
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A meeting room booking application built with React, Redux, and Tailwind CSS, designed to provide a seamless and user-friendly experience for managing room reservations. The application features a modern UI and includes functionalities such as booking management, payment processing, and user authentication.
 
-Currently, two official plugins are available:
+## Table of Contents
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- [Features](#features)
+- [Tech Stack](#tech-stack)
+- [Setup Instructions](#setup-instructions)
+- [Usage](#usage)
 
-## Expanding the ESLint configuration
+## Features
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- **Room Browsing:** Browse and select rooms with real-time availability.
+- **Booking Management:** Manage and confirm bookings with detailed information.
+- **Admin Management:** Create, update, and manage rooms, slots, and bookings.
+- **Payment Integration:** Secure payment processing for bookings.
+- **User Authentication:** Sign up and log in.
+- **Responsive Design:** Optimized for both desktop and mobile devices.
 
-- Configure the top-level `parserOptions` property like this:
+## Tech Stack
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+- **Frontend:**
+  - React
+  - TypeScript
+  - Tailwind CSS
+  - Redux Toolkit
+  - React Query
+- **Backend:**
+  - Node.js
+  - Express.js
+  - MongoDB
+- **State Management:**
+  - Redux
+- **Styling:**
+  - Tailwind CSS
+- **UI Components:**
+  - Shadcn UI and Tailwind CSS
+- **Payment Integration:**
+  - Stripe
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+## Setup Instructions
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+To set up and run this project locally, follow these steps:
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+1. **Clone the repository:**
+
+   ```bash
+   git clone https://github.com/omarfaruktaj/meet-space.git meet-space
+   cd meet-space
+   ```
+
+2. **Install dependencies:**
+
+   ```bash
+   yarn install
+   ```
+
+3. **Set up environment variables:**
+
+   Create a `.env` file in the root directory and add the necessary environment variables:
+
+   ```plaintext
+   VITE_CLOUDINARY_CLOUD_NAME=your-cloudinary-cloud-name
+   VITE_CLOUDINARY_UPLOAD_PRESET=your-cloudinary-upload-preset
+   VITE_STRIPE_PUBLIC_KEY=your-stripe-public-key
+   ```
+
+4. **Start the development server:**
+
+   ```bash
+   yarn run dev
+   ```
+
+   The application should now be running at `http://localhost:5173/`.
+
+## Usage
+
+### Booking a Room
+
+1. Navigate to the homepage to view available rooms.
+2. Select a room and pick a date and time slot.
+3. Confirm your booking details in the confirmation modal.
+4. Proceed to payment and complete the booking.
+
+### Managing Bookings
+
+- View your bookings under the "My Bookings" section.
+- Check your booking status from your account.

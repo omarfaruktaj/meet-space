@@ -3,6 +3,7 @@ import { Booking } from "../../types";
 import CellAction from "./cell-action";
 import { Slot } from "@/features/slot/types";
 import { Badge } from "@/components/ui/badge";
+import { convertTime24to12 } from "@/utils/format-time-24-to-12";
 
 export const columns: ColumnDef<Booking>[] = [
   {
@@ -23,7 +24,8 @@ export const columns: ColumnDef<Booking>[] = [
     cell: ({ row }) => {
       return row.original.slots.map((slot: Slot, index: number) => (
         <div key={index}>
-          {slot.startTime} - {slot.endTime}
+          {convertTime24to12(slot.startTime)} -{" "}
+          {convertTime24to12(slot.endTime)}
         </div>
       ));
     },
