@@ -53,7 +53,7 @@ export default function SlotForm({
           date: new Date(initialData.date),
         }
       : {
-          date: new Date(),
+          date: undefined,
           startTime: "",
           endTime: "",
           room: "",
