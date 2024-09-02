@@ -24,8 +24,8 @@ export default function UpdateSlotModel({
     }
   };
   const updateSlotData = {
-    _id: data._id,
-    room: data.room._id,
+    _id: data?._id,
+    room: data?.room?._id,
     date: data.date,
     startTime: data.startTime,
     endTime: data.endTime,

@@ -12,6 +12,7 @@ export default function Slots() {
   if (isLoading) return <Loading />;
 
   if (!data) return <p>No data found.</p>;
+  console.log(data);
 
   return (
     <div className="py-10">
