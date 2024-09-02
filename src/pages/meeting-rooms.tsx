@@ -232,7 +232,7 @@ export default function MeetingRooms() {
                   onChange={handleMaxPrice}
                   value={filterValues.maxPrice}
                   min={1}
-                  placeholder="Max"
+                  placeholder="Max Price"
                   className="w-full"
                 />
               </div>
@@ -246,7 +246,7 @@ export default function MeetingRooms() {
                   onChange={handleMinCapacity}
                   value={filterValues.minCapacity}
                   min={1}
-                  placeholder="Min"
+                  placeholder="Min Capacity"
                   className="w-full mr-2"
                 />
                 {/* <Input

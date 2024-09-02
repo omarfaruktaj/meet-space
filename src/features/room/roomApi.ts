@@ -50,7 +50,7 @@ const roomApi = baseApi.injectEndpoints({
       query: (params) => {
         const {
           page = 1,
-          limit = 10,
+          limit = 9,
           searchTerm = "",
           minPrice,
           maxPrice,

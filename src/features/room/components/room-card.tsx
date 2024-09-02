@@ -19,7 +19,7 @@ export default function RoomCard({ room }: { room: Room }) {
 
   return (
     <animated.div style={cardAnimation}>
-      <Card>
+      <Card className="h-full">
         <img
           className="w-full h-48 object-cover rounded-t-md"
           src={room?.images[0]}
