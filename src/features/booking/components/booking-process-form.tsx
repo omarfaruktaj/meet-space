@@ -60,6 +60,7 @@ export default function BookingProcessForm({ room }: BookingProcessFormProps) {
         },
   });
   const dateValue = useWatch({ control: form.control, name: "date" });
+  const slotValue = useWatch({ control: form.control, name: "slots" });
 
   const { data, isLoading, error } = useGetAvailabilSlotsQuery(
     {
@@ -78,6 +79,11 @@ export default function BookingProcessForm({ room }: BookingProcessFormProps) {
       slot.endTime
     )}`,
   })) || [];
+
+  if (slotValue.length === 0) {
+    console.log(true);
+    setBookingInfo(null);
+  }
 
   function onSubmit(values: TBookingProcessFormSchema) {
     const bookingInfo = {
@@ -242,7 +248,7 @@ export default function BookingProcessForm({ room }: BookingProcessFormProps) {
           </div>
         </div>
         <div className="flex items-center justify-end">
-          <Button size={"lg"} type="submit">
+          <Button size={"lg"} type="submit" disabled={slotValue.length === 0}>
             Checkout
           </Button>
         </div>

@@ -72,7 +72,7 @@ export default function RoomForm({
                 <UploadImage
                   value={field.value}
                   disabled={isLoading}
-                  onChange={(url) => field.onChange([...field.value, url])}
+                  onChange={(urls) => field.onChange([...field.value, ...urls])}
                   onRemove={(url) =>
                     field.onChange([
                       ...field.value.filter((current) => current !== url),
